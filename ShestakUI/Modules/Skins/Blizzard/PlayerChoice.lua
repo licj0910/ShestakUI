@@ -38,17 +38,9 @@ local function LoadSkin()
 			local option = frame.Options[i]
 			option:CreateBackdrop("Overlay")
 			option.backdrop:SetPoint("TOPLEFT", -2, 20)
-			option.backdrop:SetShown(not IsInJailersTower())
 
 			for i = 1, #option.OptionButtonsContainer.Buttons do
-				local button = option.OptionButtonsContainer.Buttons[i]
-				if not button.isSkinned then
-					if IsInJailersTower() then
-						option.OptionButtonsContainer.Buttons[i]:StripTextures(true)
-					end
-					option.OptionButtonsContainer.Buttons[i]:SkinButton()
-					button.isSkinned = true
-				end
+				option.OptionButtonsContainer.Buttons[i]:SkinButton()
 			end
 
 			option.Header.Text:SetTextColor(1, .8, 0)
@@ -64,7 +56,6 @@ local function LoadSkin()
 			option.ArtBackdrop:SetPoint("TOPLEFT", option.Artwork, -2, 2)
 			option.ArtBackdrop:SetPoint("BOTTOMRIGHT", option.Artwork, 2, -2)
 			option.ArtBackdrop:SetTemplate("Default")
-			option.ArtBackdrop:SetShown(not IsInJailersTower())
 
 			for i = 1, option.WidgetContainer:GetNumChildren() do
 				local child = select(i, option.WidgetContainer:GetChildren())
